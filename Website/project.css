@@ -5,7 +5,7 @@ body {
 .titel {
   /*display: -webkit-flex;*/
   display: flex;
-  background: #F4A460;
+  background: #FFF8DC;
   font-size: 30px;
   text-align: center;
  }
@@ -13,7 +13,7 @@ body {
 .inleiding {
   display: -webkit-flex;
   display: flex;
-  background: #CD5C5C;
+  background: #FFEBCD;
   font-size: 15px;
  }
 
@@ -38,42 +38,42 @@ body {
 .AD {
   display: flex;
   overflow: auto;
-  background: #FF1493;
+  background: #FFE4C4;
   font-size: 15px;
 }
 
 .Depressie {
   display: flex;
   overflow: auto;
-  background: #FAFAD2;
+  background: #FFDEAD;
   font-size: 15px;
 }
 
 .Epilepsie {
   display: flex;
   overflow: auto;
-  background: #AFEEEE;
+  background: #F5DEB3;
   font-size: 15px;
 }
 
 .HD {
   display: flex;
   overflow: auto;
-  background: #7B68EE;
+  background: #DEB887;
   font-size: 15px;
 }
 
 .PD {
   display: flex;
   overflow: auto;
-  background: #FF7F50;
+  background: #D2B48C;
   font-size: 15px;
 }
 
 .Bronnen {
   display: flex;
   overflow: auto;
-  background: #00FF00;
+  background: #BC8F8F;
   font-size: 15px;
 }
 
