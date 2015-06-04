@@ -1,0 +1,84 @@
+body {
+  font: 11px sans-serif;
+}
+
+.titel {
+  /*display: -webkit-flex;*/
+  display: flex;
+  background: #F4A460;
+  font-size: 30px;
+  text-align: center;
+ }
+
+.inleiding {
+  display: -webkit-flex;
+  display: flex;
+  background: #CD5C5C;
+  font-size: 15px;
+ }
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.tooltip {
+  position: absolute;
+  width: 200px;
+  height: 28px;
+  pointer-events: none;
+}
+
+.AD {
+  display: flex;
+  overflow: auto;
+  background: #FF1493;
+  font-size: 15px;
+}
+
+.Depressie {
+  display: flex;
+  overflow: auto;
+  background: #FAFAD2;
+  font-size: 15px;
+}
+
+.Epilepsie {
+  display: flex;
+  overflow: auto;
+  background: #AFEEEE;
+  font-size: 15px;
+}
+
+.HD {
+  display: flex;
+  overflow: auto;
+  background: #7B68EE;
+  font-size: 15px;
+}
+
+.PD {
+  display: flex;
+  overflow: auto;
+  background: #FF7F50;
+  font-size: 15px;
+}
+
+.Bronnen {
+  display: flex;
+  overflow: auto;
+  background: #00FF00;
+  font-size: 15px;
+}
+
+img {
+  float: right;
+  margin: 0 0 1em 1em;
+  width: 200px;
+}

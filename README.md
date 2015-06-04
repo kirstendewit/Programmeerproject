@@ -15,8 +15,8 @@ Project Proposal
 De laatste jaren wordt er steeds meer onderzoek gedaan genen die betrokken zijn
 bij hersenaandoeningen. Er wordt hiernaar zowel bij dieren als mensen onderzoek
 gedaan. Al deze data is te vinden op het genen gedeelte van pubmed
-<(http://www.ncbi.nlm.nih.gov/gene/)>. Het goed, overzichtelijk en duidelijk in
-kaart brengen van al deze genen die betrokken zijn bij de verschillende
+\<(http://www.ncbi.nlm.nih.gov/gene/)\>. Het goed, overzichtelijk en duidelijk
+in kaart brengen van al deze genen die betrokken zijn bij de verschillende
 hersenaandoeningen wordt niet/nauwelijks gedaan. Daarom zullen er voor dit
 project 5 hersenaandoeningen (Alzheimers’s Disease, Parkinson's Disease,
 Huntington’s Disease, Depression en Epilepsy) worden gekozen en van die
