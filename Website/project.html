@@ -11,14 +11,14 @@ Programmerproject Data
   </head>
 <body>
 
-  <div class="titel">
+  <!-- <div class="titel">
     Genen en hersaandoeningen
   </div>
 
   <div class="inleiding">
     De laatste jaren wordt er steeds meer onderzoek gedaan genen die betrokken zijn bij hersenaandoeningen. Er wordt hiernaar zowel bij dieren als mensen onderzoek gedaan. Al deze data is te vinden op het genen gedeelte van pubmed (http://www.ncbi.nlm.nih.gov/gene/). Het goed, overzichtelijk en duidelijk in kaart brengen van al deze genen die betrokken zijn bij de verschillende hersenaandoeningen wordt niet/nauwelijks gedaan. Daarom zullen er voor dit project 5 hersenaandoeningen (Alzheimers’s Disease, Parkinson's Disease, Huntington’s Disease, Depression en Epilepsy) worden gekozen en van die aandoeningen worden de 20 meest relevante genen gekozen. Door het visueel maken hiervan kan er gekeken worden of verschillende genen betrokken zijn bij dezelfde hersenaandoeningen.
 
-  </div>
+  </div> -->
 
 <script src="d3.js"></script>
 <script>
@@ -51,14 +51,32 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+var tooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 d3.csv("braindiseases.csv", function(error, data) {
   data.forEach(function(d) {
     d.chromosome = +d.chromosome;
   });
   
-var color = d3.scale.ordinal()
-    .domain(["#ffffff", "#000000"])
-    .range(["#fbb4ae", "#b3cde3", "#ccebc5", "#decbe4", "#fed9a6"]);
+var colorMappings = {
+  "Alzheimer": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#f77165", "#fde1df"]),
+  "Depressie": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#7ba8ce", "#ebf2f8"]),
+  "Epilepsie": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#9ad78c", "#fefffe"]),
+  "Huntington": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#be99ca", "#fefdfe"]),
+  "Parkinson": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#fdb95a", "#fff9f2"])
+}
 
 var xDomain = d3.extent(data, function(d) { return d.chromosome; })
 var yDomain = d3.extent(data, function(d) { return d["disease"]; });
@@ -86,21 +104,45 @@ svg.append("g")
       .attr("transform", function(d) {
                 return "rotate(-45)" 
                 })
-      //.text("Hersenaandoening")
 
 svg.selectAll(".dot")
       .data(data)
     .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", 3.5)
+      .attr("r", 3)
       .attr("cx", function(d) { return x(d.chromosome); })
       .attr("cy", function(d) { return y(d["disease"]); })
-      .style("fill", function(d) { return color(d["disease"]); });
+      .style("fill", function(d){
+            var colorFunction = colorMappings[d["disease"]];
+            return colorFunction(d["rank"])
+          })
+      .on("mouseover", function(d) {
+          tooltip.transition()
+               .duration(250)
+               .style("opacity", .9);
+          tooltip.html("Gene: " + d["gene"] + "<br/>" )
+              .style("left", (d3.event.pageX + 5) + "px")
+              .style("top", (d3.event.pageY - 28) + "px");
+          //tooltip.direction("n")
+          //(function(d) {
+            //    if (d <= 12) return "e"
+              //  if (d > 12) return "w"
+               //});      
+               
+          tooltip.append('a')
+                .attr("href", d["information"])
+                .text(d["information"]);
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition()
+               .duration(10000)
+               .style("opacity", 0);
+      });
 
 });
 </script>
 
-<div class="AD">
+<!-- <div class="AD">
   <img alt="" SRC="ad.jpg"></img>
   De ziekte van Alzheimer (vaak kortweg alzheimer genoemd) is een degeneratieve aandoening van de hersenen waarbij de patiënt soms in snel tempo dementeert. De aandoening is vernoemd naar Alois Alzheimer, een Duitse psychiater en neuropatholoog. Een exacte diagnose is doorgaans pas mogelijk na overlijden, door de hersenen te onderzoeken. De ziekte wordt meestal vastgesteld bij personen die ouder zijn dan 65 jaar. Bij jongere mensen komt een variant voor die vroege of preseniele dementie wordt genoemd.
 </div>
@@ -132,6 +174,6 @@ svg.selectAll(".dot")
   http://nl.wikipedia.org/wiki/Ziekte_van_Huntington<br>
   http://nl.wikipedia.org/wiki/Ziekte_van_Parkinson
 </div>
-
+ -->
 </body>
 </html>
