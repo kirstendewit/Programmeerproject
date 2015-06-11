@@ -55,6 +55,17 @@ d3.csv("braindiseases.csv", function(error, data) {
     d.chromosome = +d.chromosome;
   });
   
+
+  var xDomain = d3.extent(data, function(d) { return d.chromosome; })
+  var yDomain = d3.extent(data, function(d) { return d["disease"]; });
+
+  x.domain(d3.extent(data, function(d) { return d.chromosome; }));
+
+  data.forEach(function(d){
+    d.x = x(d.chromosome);
+    d.y = y(d["disease"]);
+  });
+
   // setup colorscale
   var colorMappings = {
     "Alzheimer": d3.scale.linear()
@@ -73,11 +84,6 @@ d3.csv("braindiseases.csv", function(error, data) {
       .domain([1, 20])
       .range(["#fdb95a", "#fff9f2"])
   }
-
-  var xDomain = d3.extent(data, function(d) { return d.chromosome; })
-  var yDomain = d3.extent(data, function(d) { return d["disease"]; });
-
-  x.domain(d3.extent(data, function(d) { return d.chromosome; }));
 
   // append x-axis
   svg.append("g")
@@ -109,19 +115,12 @@ d3.csv("braindiseases.csv", function(error, data) {
       .enter().append("circle")
         .attr("class", "dot")
         .attr("r", 3)
-        .attr("cx", function(d) { return x(d.chromosome); })
-        .attr("cy", function(d) { return y(d["disease"]); })
+        .attr("cx", function(d) { return d.x; })
+        .attr("cy", function(d) { return d.y; })
         .style("fill", function(d){
               var colorFunction = colorMappings[d["disease"]];
               return colorFunction(d["rank"])
             })
-        .on("mousemove", function() {
-            //console.log("test");
-            fisheye.focus(d3.mouse(this));});
-            dot.each(function(d) { d.fisheye = fisheye(d); })
-                .attr("cx", function(d) { return d.fisheye.x; })
-                .attr("cy", function(d) { return d.fisheye.y; })
-                .attr("r", function(d) { return d.fisheye.z * 4.5; })
         .on("mouseover", function(d) {
             tooltip.transition()
                  .duration(250)
@@ -146,4 +145,19 @@ d3.csv("braindiseases.csv", function(error, data) {
                  .style("opacity", 0);
         });
 
+var dot = d3.selectAll('.dot');
+
+d3.select('svg').on("mousemove", function() {
+  //console.log(fisheye.focus());
+  fisheye.focus(d3.mouse(this));
+  dot
+    .each(function(d) { d.fisheye = fisheye(d); })
+    .attr("cx", function(d) { return d.fisheye.x; })
+    .attr("cy", function(d) { return d.fisheye.y; })
+    .attr("r", function(d) { return d.fisheye.z * 4.5; });
+
+  d3.mouse(this);
+
 });
+
+})

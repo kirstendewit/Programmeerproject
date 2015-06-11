@@ -11,14 +11,18 @@ var margin = {top: 20, right: 20, bottom: 30, left: 100},
     width = 1100 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
-// setup x
+/*// setup x
 var x = d3.scale.linear()
     .range([0, width]);
 
 // setup y
 var y = d3.scale.ordinal()
     .rangePoints([height, 0])
-    .domain(["", "Alzheimer", "Depressie", "Epilepsie", "Huntington", "Parkinson"]);
+    .domain(["", "Alzheimer", "Depressie", "Epilepsie", "Huntington", "Parkinson"]);*/
+
+var x = d3.fisheye.scale(d3.scale.identity).domain([0, width]).focus(360),
+    y = d3.fisheye.scale(d3.scale.identity).domain(["", "Alzheimer", "Depressie", "Epilepsie", "Huntington", "Parkinson"]).focus(90),
+    radiusScale = d3.scale.sqrt().domain([0, 5e8]).range([0, 40]);
 
 // setup x-axis
 var xAxis = d3.svg.axis()
@@ -55,6 +59,17 @@ d3.csv("braindiseases.csv", function(error, data) {
     d.chromosome = +d.chromosome;
   });
   
+
+  var xDomain = d3.extent(data, function(d) { return d.chromosome; })
+  var yDomain = d3.extent(data, function(d) { return d["disease"]; });
+
+  x.domain(d3.extent(data, function(d) { return d.chromosome; }));
+
+  data.forEach(function(d){
+    d.x = x(d.chromosome);
+    d.y = y(d["disease"]);
+  });
+
   // setup colorscale
   var colorMappings = {
     "Alzheimer": d3.scale.linear()
@@ -73,11 +88,6 @@ d3.csv("braindiseases.csv", function(error, data) {
       .domain([1, 20])
       .range(["#fdb95a", "#fff9f2"])
   }
-
-  var xDomain = d3.extent(data, function(d) { return d.chromosome; })
-  var yDomain = d3.extent(data, function(d) { return d["disease"]; });
-
-  x.domain(d3.extent(data, function(d) { return d.chromosome; }));
 
   // append x-axis
   svg.append("g")
@@ -109,19 +119,13 @@ d3.csv("braindiseases.csv", function(error, data) {
       .enter().append("circle")
         .attr("class", "dot")
         .attr("r", 3)
-        .attr("cx", function(d) { return x(d.chromosome); })
-        .attr("cy", function(d) { return y(d["disease"]); })
+        //.attr("cx", function(d) { return d.x; })
+        //.attr("cy", function(d) { return d.y; })
         .style("fill", function(d){
               var colorFunction = colorMappings[d["disease"]];
               return colorFunction(d["rank"])
             })
-        .on("mousemove", function() {
-            //console.log("test");
-            fisheye.focus(d3.mouse(this));});
-            dot.each(function(d) { d.fisheye = fisheye(d); })
-                .attr("cx", function(d) { return d.fisheye.x; })
-                .attr("cy", function(d) { return d.fisheye.y; })
-                .attr("r", function(d) { return d.fisheye.z * 4.5; })
+        .call(position)
         .on("mouseover", function(d) {
             tooltip.transition()
                  .duration(250)
@@ -146,4 +150,20 @@ d3.csv("braindiseases.csv", function(error, data) {
                  .style("opacity", 0);
         });
 
-});
+function position(dot) {
+      dot .attr("cx", function(d) { return x(x(d)); })
+          .attr("cy", function(d) { return y(y(d)); })
+          .attr("r", function(d) { return radiusScale(3); });
+    }
+
+svg.on("mousemove", function() {
+      var mouse = d3.mouse(this);
+      x.distortion(2.5).focus(mouse[0]);
+      y.distortion(2.5).focus(mouse[1]);
+
+      dot.call(position);
+      svg.select(".x.axis").call(xAxis);
+      svg.select(".y.axis").call(yAxis);
+    });
+
+})
