@@ -1,20 +1,30 @@
 body {
   font: 11px sans-serif;
+  min-width: 600px;
+  background: #fffdf6;
 }
 
 .titel {
   display: flex;
-  background: #FFF8DC;
+  /*background: #FFF8DC;*/
   font-size: 30px;
   text-align: center;
+  min-width: 1000px;
  }
 
 .inleiding {
   display: -webkit-flex;
   display: flex;
-  background: #FFEBCD;
+  /*background: #FFEBCD;*/
   font-size: 15px;
+  text-align: justify;
+  min-width: 1000px;
  }
+
+.button {
+  display: flex;
+  float: right;
+}
 
 .axis path,
 .axis line {
@@ -31,7 +41,7 @@ body {
   position: absolute;
   font-size: 12px;
   box-shadow: 0px 0px 5px #999999;
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
   padding: 10px;
   width: 230px;
   height: 28px;
@@ -40,43 +50,49 @@ body {
 .AD {
   display: flex;
   overflow: auto;
-  background: #FFE4C4;
+  /*background: #FFE4C4;*/
   font-size: 15px;
+  min-width: 1000px;
 }
 
 .Depressie {
   display: flex;
   overflow: auto;
-  background: #FFDEAD;
+  /*background: #FFDEAD;*/
   font-size: 15px;
+  min-width: 1000px;
 }
 
 .Epilepsie {
   display: flex;
   overflow: auto;
-  background: #F5DEB3;
+  /*background: #F5DEB3;*/
   font-size: 15px;
+  min-width: 1000px;
 }
 
 .HD {
   display: flex;
   overflow: auto;
-  background: #DEB887;
+  /*background: #DEB887;*/
   font-size: 15px;
+  min-width: 1000px;
 }
 
 .PD {
   display: flex;
   overflow: auto;
-  background: #D2B48C;
+  /*background: #D2B48C;*/
   font-size: 15px;
+  min-width: 1000px;
 }
 
 .Bronnen {
   display: flex;
   overflow: auto;
-  background: #BC8F8F;
-  font-size: 15px;
+  /*background: #BC8F8F;*/
+  font-size: 10px;
+  min-width: 1000px;
 }
 
 img {

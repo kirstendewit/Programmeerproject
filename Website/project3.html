@@ -1,0 +1,98 @@
+<!doctype html>
+<!-- 
+Kirsten de Wit
+6063098
+Programmerproject Data
+-->
+<head>
+    <meta charset="utf-8"/>
+    <title>Hersenaandoeningen</title>
+    <LINK rel="stylesheet" type="text/css" href="project.css">
+  </head>
+<body>
+
+  <div class="titel">
+    Genen en hersaandoeningen
+  </div>
+
+  <div class="inleiding">
+    Tijdens mijn opleiding Psychobiologie en Neurobiologie heb ik veel verschillende hersenaandoeningen voorbij zien komen. De laatste jaren wordt er, mede door de huidige technieken, veel meer gekeken naar de genen die betrokken zijn bij hersenaandoeningen. Het viel mij op dat de genen die betrokken zijn bij verschillende hersenaandoeningen nooit echt met elkaar vergeleken worden. Ook bij het zoeken op internet kon ik geen vergelijking vinden van genen die bij verschillende hersenaandoeningen. Wel is deze data is te vinden op het genen gedeelte van PubMed (http://www.ncbi.nlm.nih.gov/gene/). Er zullen voor dit project 5 hersenaandoeningen (Ziekte van Alzheimer, Ziekte van Parkinson, Ziekte van Huntington, Depressie en Epilepsie) worden gekozen en van die aandoeningen worden de 20 meest relevante genen gekozen. Door het visueel maken hiervan kan er gekeken worden of verschillende genen betrokken zijn bij dezelfde hersenaandoeningen.<br>
+    De visualistie hieronder heeft op de x-as de 23 chromosomen en op de y-as de 5 verschillende hersenaandoeningen staan. De genen worden getoond op waar ze zich op het chromosoom bevinden. Het verschil in kleur geeft de relevantie, des te donderder des te relevanter. Daarnaast zal wanneer de muis op punt wordt gehouden de informatie van het gen getoond worden en de link naar de geninformatie op PubMed. <br>
+    Doormiddel van de buttons kan een specifieke hersenaandoeningen geselecteerd worden, daarnaast zullen de van de andere hersenaandoeningen de genen getoond worden die ook bij de geselecteerde hersenaandoening betrokken zijn. 
+ </div>
+
+ <div id="buttons">
+  <span id="button">
+  <input name="al"
+         type="button"
+         value="Alle data">
+       </input>
+  <input name="AD"
+         type="button"
+         value="Alzheimer">
+       </input>
+  <input name="DP"
+         type="button"
+         value="Depressie">
+       </input>
+  <input name="EP"
+         type="button"
+         value="Epilepsie">
+       </input>
+  <input name="HD"
+         type="button"
+         value="Huntington">
+       </input>
+  <input name="PD"
+         type="button"
+         value="Parkinson">
+       </input>
+  </span>
+</div>
+
+<script src="d3.js"></script>
+<script src="fisheye.js"></script>
+<script src="main3.js"></script>
+
+<div class="AD">
+  <img alt="" SRC="ad.jpg"></img>
+  De ziekte van Alzheimer (kortweg Alzheimer) zorgt voor 60% to 70% van dementiegevallen. Het is een chronische neurodegeneratieve aandoening, waarbij het meest herkenbare symptoom het verlies van geheugen is. De oorzaak van Alzheimer is nog steeds niet bekend, maar het grootste risico komt vanuit de genen en daarnaast zijn andere andere risicofactoren depressie en hersenbeschadigingen. Alzheimer wordt geassocieerd met plaques en tangles doe zich opbouwen in de hersenen. De diagnose wordt gedaan op basis van de  Mini-mental state examination. Op dit moment is er nog geen behandeling voor Alzheimer. Onderzoek heeft aangetoond dat ouderen met een hoge opleiding minder kans hebben op het ontwikkelen van Alzheimer.
+</div>
+
+<div class="Depressie">
+  <img alt="" SRC="depressie.jpg"></img>
+  Depressie is een psychische aandoeningen die zich kenmerkt door constante neerslachtigheid wat gepaard gaat met een laag zelfbeeld en verlies van levenslust. De diagnose wordt gemaakt op basis van ervaringen van degenen zelf en de omgeving en de "mental status examination". Daarnaast wordt er gebruik gemaakt van DSM-IV TR, in dit handboek staat beschreven aan welke criteria voldaan moeten worden. De eerste keer dat iemand een depressie heeft is tussen de 20 en 30 jaar. Er kunnen antidepressiva voorgeschreven worden, maar lijken het effectiefst voor mensen met een zware depressie te zijn. Daarnaast bestaat de behandeling vaak uit therapie. Bij het ontstaan van een depressie spelen verschillende factoren een rol; biologische, psychologiche en sociale factoren.  
+</div>
+
+<div class="Epilepsie">
+  <img alt="" SRC="epilepsie.jpg"></img>
+  Epilepsie wordt gekenmerkt door insulten, welke erg kort kunnen zijn zonder dat ze opgemerkt worden tot erg lang met veel schokken. De oorzaak van epilepsie is nog steeds onbekend, maar sommige mensen ontwikkelen het naar aanleiding van een hersenbloeding, hersenletsel of een hersentumor. De insulten worden veroorzaakt door extreme en abnormale corticale hersenactiviteit. In 70% van de gevallen zijn de insulten te controleren met medicatie, wanneer dit niet het geval is kunnen neurostimulatie, een operatie of veranderingen in het dieet een optie zijn. Het is belangrijk om te melden dat in geval van medicatie epilepsie niet genezen wordt, maar dat insulten worden voorkomen.
+</div>
+
+<div class="HD">
+  <img alt="" SRC="HD.jpg"></img>
+  De ziekte van Huntington is een neurodegeneratieve erfelijke aandoeningen. Het zal de spiercoördinatie beïnvloeden en zal uiteindelijk zorgen voor mentale achteruitgang en gedragssymptomen. De symptomen kunnen variëren tussen individuen en mensen uit de familie, maar het verloop is over het algemeen voorspeelbaar. Meestal uit de ziekte zich tussen de 35 en 44 jaar, maar in 6% van de gevallen begint de ziekte voordat iemand 21 jaar is. Er is op dit moment geen behandeling voor de Ziekte van Huntington, maar met medicijnen kunnen de symptomen verlicht worden. Na gemiddeld 18 jaren leidt de ziekte tot de dood van de patiënt, maar meestal niet aan de ziekte zelf maar aan bijkomende oorzaken als een longontsteking.
+</div>
+
+<div class="PD">
+  <img alt="" SRC="PD.jpg"></img>
+  De ziekte van Parkinson, vernoemd naar de Engelse arts James Parkinson (1755-1824), is een hersenziekte waarbij zenuwcellen, vooral, maar niet uitsluitend de zenuwcellen van de substantia nigra ("zwarte stof"), langzaam afsterven (degenereren). Wanneer de verschijnselen van deze ziekte wel aanwezig zijn maar door een andere oorzaak ontstaan, spreekt men van parkinsonisme.
+</div>
+
+<div class="Bronnen">
+  http://www.bmj.com/content/338/bmj.b158, 
+  http://www.who.int/mediacentre/factsheets/fs362/en/, 
+  http://www.thelancet.com/journals/lancet/article/PIIS0140-6736(10)61349-9/abstract, 
+  http://brain.oxfordjournals.org/content/122/12/2309, 
+  https://psychology.byu.edu/Documents/Syllabi/W14/Warren_Syllabus%20342%20W%202013.pdf, 
+  http://www.health.am/psy/major-depressive-disorder/, 
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3712503/, 
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2253608/, 
+  http://www.nejm.org/doi/full/10.1056/NEJMra022308, 
+  http://onlinelibrary.wiley.com/doi/10.1111/epi.12550/abstract;jsessionid=B3A9675DECC145AB4CA89A282FB9E412.f01t01, 
+  http://www.who.int/mediacentre/factsheets/fs999/en/, 
+  http://web.stanford.edu/group/hopes/cgi-bin/hopes_test/the-behavioral-symptoms-of-huntingtons-disease/, 
+</div>
+
+</body>
+</html>

@@ -39,11 +39,6 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// setup fisheye
-var fisheye = d3.fisheye.circular()
-    .radius(200)
-    .distortion(2);
-
 // setup tooltip
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -115,13 +110,6 @@ d3.csv("braindiseases.csv", function(error, data) {
               var colorFunction = colorMappings[d["disease"]];
               return colorFunction(d["rank"])
             })
-        .on("mousemove", function() {
-            //console.log("test");
-            fisheye.focus(d3.mouse(this));});
-            dot.each(function(d) { d.fisheye = fisheye(d); })
-                .attr("cx", function(d) { return d.fisheye.x; })
-                .attr("cy", function(d) { return d.fisheye.y; })
-                .attr("r", function(d) { return d.fisheye.z * 4.5; })
         .on("mouseover", function(d) {
             tooltip.transition()
                  .duration(250)
