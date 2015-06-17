@@ -14,7 +14,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 100},
 // setup x
 var x = d3.fisheye.scale(d3.scale.linear)
     .range([0, width])
-    .domain([0, 23.2009]);
+    .domain([0.35, 23.2009]);
 
 // setup y
 var y = d3.scale.ordinal()
@@ -77,112 +77,107 @@ svg.append("g")
                 })
 
 // setup colorscale
-  var colorMappings = {
-    "Alzheimer": d3.scale.linear()
-      .domain([1, 20])
-      .range(["#f77165", "#fde1df"]),
-    "Depressie": d3.scale.linear()
-      .domain([1, 20])
-      .range(["#7ba8ce", "#ebf2f8"]),
-    "Epilepsie": d3.scale.linear()
-      .domain([1, 20])
-      .range(["#9ad78c", "#fefffe"]),
-    "Huntington": d3.scale.linear()
-      .domain([1, 20])
-      .range(["#be99ca", "#fefdfe"]),
-    "Parkinson": d3.scale.linear()
-      .domain([1, 20])
-      .range(["#fdb95a", "#fff9f2"])
-  }
+var colorMappings = {
+  "Alzheimer": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#f77165", "#fde1df"]),
+  "Depressie": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#7ba8ce", "#ebf2f8"]),
+  "Epilepsie": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#9ad78c", "#fefffe"]),
+  "Huntington": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#be99ca", "#fefdfe"]),
+  "Parkinson": d3.scale.linear()
+    .domain([1, 20])
+    .range(["#fdb95a", "#fff9f2"])
+}
 
 function redraw(data, position, disease_key) {
   // draw circles and add tooltip with information
-    d3.select('g.dots').remove();
+  d3.select('g.dots').remove();
 
-    var dot = svg.append("g")
-          .attr("class", "dots")
-        .selectAll(".dot")
-          .data(data)
-        .enter().append("circle")
-        .filter(function(d) {return d[disease_key] > 0})
-          .style("fill", "red")
-          .attr("class", "dot")
-          .attr("r", 3)
-          .style("fill", function(d){
-                var colorFunction = colorMappings[d["disease"]];
-                return colorFunction(d["rank"])
-              })
-          .call(position)
-          .on("mouseover", function(d) {
-              tooltip.transition()
-                  .duration(250)
-                  .style("opacity", .9);
-              tooltip.html("Gene: " + d["gene"] + "<br/>" )
-                  .style("left", function(d){
-                    if (d3.event.pageX < 720){
-                      return ((d3.event.pageX + 5) + "px");
-                    }
-                    else{
-                      return ((d3.event.pageX - 250) + "px");
-                    }
-                  })
-                  .style("top", (d3.event.pageY - 28) + "px")   
-              tooltip.append('a')
-                    .attr("href", d["information"])
-                    .text(d["information"]);
-          })
-          .on("mouseout", function(d) {
-              tooltip.transition()
-                  .duration(5000)
-                  .style("opacity", 0);
-          });
+  var dot = svg.append("g")
+        .attr("class", "dots")
+      .selectAll(".dot")
+        .data(data)
+      .enter().append("circle")
+      .filter(function(d) {return d[disease_key] > 0})
+        .attr("class", "dot")
+        .attr("r", 3)
+        .style("fill", function(d){
+              var colorFunction = colorMappings[d["disease"]];
+              return colorFunction(d["rank"])
+            })
+        .call(position)
+        .on("mouseover", function(d) {
+            tooltip.transition()
+                .duration(250)
+                .style("opacity", .9);
+            tooltip.html("Gene: " + d["gene"] + "<br/>" + "Rank: " + d.rank + "<br/>")
+                .style("left", function(d){
+                  if (d3.event.pageX < 720){
+                    return ((d3.event.pageX + 5) + "px");
+                  }
+                  else{
+                    return ((d3.event.pageX - 250) + "px");
+                  }
+                })
+                .style("top", (d3.event.pageY - 28) + "px")   
+            tooltip.append('a')
+                  .attr("href", d["information"])
+                  .text(d["information"]);
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition()
+                .duration(5000)
+                .style("opacity", 0);
+        });
 
-        svg.on("mousemove", function() {
-          var mouse = d3.mouse(this);
-          x.distortion(2.5).focus(mouse[0]);
+      svg.on("mousemove", function() {
+        var mouse = d3.mouse(this);
+        x.distortion(2.5).focus(mouse[0]);
 
-          dot.call(position);
-          svg.select(".x.axis").call(xAxis);
-      });
+        dot.call(position);
+        svg.select(".x.axis").call(xAxis);
+    });
 };
 
 
 // load data and convert string to number
-  d3.csv("braindiseases3.csv", function(error, data) {
-    data.forEach(function(d) {
-      d.chromosome = +d.chromosome;
-      d.AD = +d.AD;
-      d.DP = +d.DP;
-      d.EP = +d.EP;
-      d.HD = +d.HD;
-      d.PD = +d.PD;
-      d.al = +d.al;
-    });
+d3.csv("braindiseases3.csv", function(error, data) {
+  data.forEach(function(d) {
+    d.chromosome = +d.chromosome;
+    d.rank = +d.rank;
+    d.AD = +d.AD;
+    d.DP = +d.DP;
+    d.EP = +d.EP;
+    d.HD = +d.HD;
+    d.PD = +d.PD;
+    d.al = +d.al;
+  });
   
+  //var xDomain = d3.extent(data, function(d) { return d.chromosome; });
+  //x.domain(d3.extent(data, function(d) { return d.chromosome; }));
 
-    var xDomain = d3.extent(data, function(d) { return d.chromosome; });
-    x.domain(d3.extent(data, function(d) { return d.chromosome; }));
+  // Filter function for diseases
+  redraw(data, position, 'al');
+  d3.select("[name=al]").on("click", function() {redraw(data, position, 'al');});
+  d3.select("[name=AD]").on("click", function() {redraw(data, position, 'AD');});
+  d3.select("[name=DP]").on("click", function() {redraw(data, position, 'DP');});
+  d3.select("[name=EP]").on("click", function() {redraw(data, position, 'EP');});
+  d3.select("[name=HD]").on("click", function() {redraw(data, position, 'HD');});
+  d3.select("[name=PD]").on("click", function() {redraw(data, position, 'PD');});
 
-  
-    // Selecteer de buttons (by id), registreer daarop click handlers en zorg dat
-    // je in de callback functie de redraw functie aanroept.
-
-    redraw(data, position, 'al');
-    d3.select("[name=al]").on("click", function() {redraw(data, position, 'al');});
-    d3.select("[name=AD]").on("click", function() {redraw(data, position, 'AD');});
-    d3.select("[name=DP]").on("click", function() {redraw(data, position, 'DP');});
-    d3.select("[name=EP]").on("click", function() {redraw(data, position, 'EP');});
-    d3.select("[name=HD]").on("click", function() {redraw(data, position, 'HD');});
-    d3.select("[name=PD]").on("click", function() {redraw(data, position, 'PD');});
-
-
-
+  // dot position
   function position(dot) {
         dot .attr("cx", function(d) { return x(d.chromosome); })
             .attr("cy", function(d) { return y(d["disease"]); })
-            .attr("r", 3.5);
+            .attr("r", 4);
       }
 
 
 
-  });
+});

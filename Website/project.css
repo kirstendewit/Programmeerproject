@@ -1,3 +1,9 @@
+/*
+Kirsten de Wit
+6063098
+Programmerproject Data
+*/
+
 body {
   font: 11px sans-serif;
   min-width: 600px;
@@ -16,14 +22,19 @@ body {
   display: -webkit-flex;
   display: flex;
   /*background: #FFEBCD;*/
+  padding: 1em;
   font-size: 15px;
   text-align: justify;
   min-width: 1000px;
  }
 
-.button {
-  display: flex;
-  float: right;
+.buttons {
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-justify-content: center;
+          justify-content: center;
 }
 
 .axis path,
@@ -41,17 +52,19 @@ body {
   position: absolute;
   font-size: 12px;
   box-shadow: 0px 0px 5px #999999;
-  /*background-color: #ffffff;*/
+  background-color: #ffffff;
   padding: 10px;
   width: 230px;
-  height: 28px;
+  height: 40px;
 }
 
 .AD {
   display: flex;
   overflow: auto;
   /*background: #FFE4C4;*/
+  padding: 1em;
   font-size: 15px;
+  text-align: justify;
   min-width: 1000px;
 }
 
@@ -59,7 +72,9 @@ body {
   display: flex;
   overflow: auto;
   /*background: #FFDEAD;*/
+  padding: 1em;
   font-size: 15px;
+  text-align: justify;
   min-width: 1000px;
 }
 
@@ -67,7 +82,9 @@ body {
   display: flex;
   overflow: auto;
   /*background: #F5DEB3;*/
+  padding: 1em;
   font-size: 15px;
+  text-align: justify;
   min-width: 1000px;
 }
 
@@ -75,7 +92,9 @@ body {
   display: flex;
   overflow: auto;
   /*background: #DEB887;*/
+  padding: 1em;
   font-size: 15px;
+  text-align: justify;
   min-width: 1000px;
 }
 
@@ -83,7 +102,9 @@ body {
   display: flex;
   overflow: auto;
   /*background: #D2B48C;*/
+  padding: 1em;
   font-size: 15px;
+  text-align: justify;
   min-width: 1000px;
 }
 
@@ -91,6 +112,8 @@ body {
   display: flex;
   overflow: auto;
   /*background: #BC8F8F;*/
+  white-space: pre-wrap;
+  padding: 1em;
   font-size: 10px;
   min-width: 1000px;
 }
