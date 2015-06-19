@@ -80,10 +80,10 @@ svg.append("g")
 var colorMappings = {
   "Alzheimer": d3.scale.linear()
     .domain([1, 20])
-    .range(["#f77165", "#fde1df"]),
+    .range(["#f77165", "#fefbfb"]),
   "Depressie": d3.scale.linear()
     .domain([1, 20])
-    .range(["#7ba8ce", "#ebf2f8"]),
+    .range(["#7ba8ce", "#fcfdfe"]),
   "Epilepsie": d3.scale.linear()
     .domain([1, 20])
     .range(["#9ad78c", "#fefffe"]),
@@ -103,10 +103,11 @@ function redraw(data, position, disease_key) {
         .attr("class", "dots")
       .selectAll(".dot")
         .data(data)
-      .enter().append("circle")
+      .enter().append("ellipse")
       .filter(function(d) {return d[disease_key] > 0})
         .attr("class", "dot")
-        .attr("r", 3)
+        .attr("rx", 2.5)
+        .attr("ry", function(d) {return d.rank *  -0.75 + 18.75})
         .style("fill", function(d){
               var colorFunction = colorMappings[d["disease"]];
               return colorFunction(d["rank"])
@@ -147,7 +148,7 @@ function redraw(data, position, disease_key) {
 
 
 // load data and convert string to number
-d3.csv("braindiseases3.csv", function(error, data) {
+d3.csv("braindiseases.csv", function(error, data) {
   data.forEach(function(d) {
     d.chromosome = +d.chromosome;
     d.rank = +d.rank;
@@ -159,9 +160,6 @@ d3.csv("braindiseases3.csv", function(error, data) {
     d.al = +d.al;
   });
   
-  //var xDomain = d3.extent(data, function(d) { return d.chromosome; });
-  //x.domain(d3.extent(data, function(d) { return d.chromosome; }));
-
   // Filter function for diseases
   redraw(data, position, 'al');
   d3.select("[name=al]").on("click", function() {redraw(data, position, 'al');});
@@ -175,7 +173,8 @@ d3.csv("braindiseases3.csv", function(error, data) {
   function position(dot) {
         dot .attr("cx", function(d) { return x(d.chromosome); })
             .attr("cy", function(d) { return y(d["disease"]); })
-            .attr("r", 4);
+            .attr("rx", 2.5)
+            .attr("ry", function(d) {return d.rank * -0.75 + 18.75});
       }
 
 

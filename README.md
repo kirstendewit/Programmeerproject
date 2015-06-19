@@ -7,58 +7,63 @@ Data
 Programmeerproject
 ==================
 
-Project Proposal
-----------------
-
-### Probleem
-
-De laatste jaren wordt er steeds meer onderzoek gedaan genen die betrokken zijn
-bij hersenaandoeningen. Er wordt hiernaar zowel bij dieren als mensen onderzoek
-gedaan. Al deze data is te vinden op het genen gedeelte van pubmed
-\<(http://www.ncbi.nlm.nih.gov/gene/)\>. Het goed, overzichtelijk en duidelijk
-in kaart brengen van al deze genen die betrokken zijn bij de verschillende
-hersenaandoeningen wordt niet/nauwelijks gedaan. Daarom zullen er voor dit
-project 5 hersenaandoeningen (Alzheimers’s Disease, Parkinson's Disease,
-Huntington’s Disease, Depression en Epilepsy) worden gekozen en van die
-aandoeningen worden de 20 meest relevante genen gekozen. Door het visueel maken
-hiervan kan er gekeken worden of verschillende genen betrokken zijn bij dezelfde
-hersenaandoeningen.
+De visualisatie kan geopend worden door index.html te openen.
 
  
 
-### Schets
-
-![](<doc/Schets_project.png>)
-
-Dit is een ruwe schets van hoe het eindproduct (scatterplot) eruit zou moeten
-zien. Op de x-as zullen de verschillende chromosomen komen te staan en op de
-y-as de 5 verschillende hersenaandoeningen. De verschillende hersenaandoeningen
-met de betrokken genen zullen een verschillende kleur krijgen. Daarnaast zal de
-kleurintensiteit verschillen voor de verschillende genen van de
-hersenaandoeningen, afhankelijk van de relevantie van het gen.  
-De genen zullen per chromosoom weergegeven worden en zullen geplaatst worden aan
-de hand van de locactie op het chromosoom. Daarnaast zal de informatie van het
-gen getoond worden wanneer de muis bij het gen staat.
+Screen shots
+------------
 
  
 
-### Planning
+Doel
+----
 
-Week 1: Data verzamelen, Proposal schrijven, Thechnisch Framework, Begin van
-webpagina maken
-
-Week 2: Visualisatie werkend maken, HTML pagina maken
-
-Week 3: Opmaak visualisatie, HTML pagina afronden
-
-Week 4: Verslag af en visualisatie optimaliseren
+Het doel van deze visualisatie is het in kaart brengen van genen die betrokken
+zijn bij hersenaandoeningen. Door de 20 meest relevante genen per
+hersenaandoening weer te geven, kan er visueel makkelijk gekeken worden of
+dezelfde genen bij verschillende hersenaandoeningen betrokken zijn.
 
  
 
-### Problemen
+Auteur
+------
 
-Mogelijke problemen die kunnen onststaan zijn het niet goed kunnen representeren
-van de data in de grafiek wat betreft de kleuren en de kleurverandering. De
-weergave van de data die niet overzichtelijk is. Genen op hetzelfde chromosoom
-die over elkaar worden weergegeven, doordat de verschillen van de locatie te
-klein zijn.
+Kirsten de Wit
+
+ 
+
+Copyright
+---------
+
+Al het materiaal wat door mij is gemaakt mag niet zonder mijn toestemming
+gebruikt of gekopieerd worden.
+
+ 
+
+Externe code en plaatjes
+------------------------
+
+Al deze exterene codes en plaatjes hebben hun eigen copyright
+
+-   d3.js (<https://github.com/mbostock/d3/blob/master/d3.js>)
+
+-   fisheye.js
+    (<https://github.com/d3/d3-plugins/blob/master/fisheye/fisheye.js>)
+
+-   Plaatje Alzheimer
+    (<https://www.alzheimer.nl/over-alzheimer/achtergrondinformatie/medische-illustraties/hersenen-en-alzheimer>)
+
+-   Plaatje Depressie
+    (<http://sixpenceee.com/post/83855363730/disorders-their-respective-brain-scans>)
+
+-   Plaatje Epilepsie (<http://www.connecttoresearch.org/publications/64>)
+
+-   Plaatje Huntington (<https://folding.stanford.edu/home/faq/faq-diseases/>)
+
+-   Plaatje Parkinson
+    (<https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTi7IaAE_sxMJCvd-T8uFlTCyg-mTe3G2ekmqKvnlInWluknjkdjw>)
+
+ 
+
+ 
