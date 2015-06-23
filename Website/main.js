@@ -7,9 +7,9 @@ Programmerproject Data
 "use strict";
 
 // Set the margins
-var margin = {top: 20, right: 20, bottom: 30, left: 100},
+var margin = {top: 30, right: 20, bottom: 30, left: 100},
     width = 1100 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    height = 310 - margin.top - margin.bottom;
 
 // setup x
 var x = d3.fisheye.scale(d3.scale.linear)
@@ -71,10 +71,7 @@ svg.append("g")
     .selectAll("text")
       .style("text-anchor", "end")
       .attr("dx", "-.8em")
-      .attr("dy", ".15em")
-      .attr("transform", function(d) {
-                return "rotate(-45)" 
-                })
+      .attr("dy", ".15em");
 
 // setup colorscale
 var colorMappings = {
@@ -106,8 +103,8 @@ function redraw(data, position, disease_key) {
       .enter().append("ellipse")
       .filter(function(d) {return d[disease_key] > 0})
         .attr("class", "dot")
-        .attr("rx", 2.5)
-        .attr("ry", function(d) {return d.rank *  -0.75 + 18.75})
+        .attr("rx", 2.75)
+        .attr("ry", function(d) {return d.rank *  -1 + 24})
         .style("fill", function(d){
               var colorFunction = colorMappings[d["disease"]];
               return colorFunction(d["rank"])
@@ -139,7 +136,7 @@ function redraw(data, position, disease_key) {
 
       svg.on("mousemove", function() {
         var mouse = d3.mouse(this);
-        x.distortion(2.5).focus(mouse[0]);
+        x.distortion(3).focus(mouse[0]);
 
         dot.call(position);
         svg.select(".x.axis").call(xAxis);
@@ -162,19 +159,37 @@ d3.csv("braindiseases.csv", function(error, data) {
   
   // Filter function for diseases
   redraw(data, position, 'al');
-  d3.select("[name=al]").on("click", function() {redraw(data, position, 'al');});
-  d3.select("[name=AD]").on("click", function() {redraw(data, position, 'AD');});
-  d3.select("[name=DP]").on("click", function() {redraw(data, position, 'DP');});
-  d3.select("[name=EP]").on("click", function() {redraw(data, position, 'EP');});
-  d3.select("[name=HD]").on("click", function() {redraw(data, position, 'HD');});
-  d3.select("[name=PD]").on("click", function() {redraw(data, position, 'PD');});
+  d3.select("[name=al]").on("click", function() {
+    redraw(data, position, 'al'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=al]").style("background", "#E9967A" );});
+  d3.select("[name=AD]").on("click", function() {
+    redraw(data, position, 'AD'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=AD]").style("background", "#E9967A" );});
+  d3.select("[name=DP]").on("click", function() {
+    redraw(data, position, 'DP'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=DP]").style("background", "#E9967A" );});
+  d3.select("[name=EP]").on("click", function() {
+    redraw(data, position, 'EP'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=EP]").style("background", "#E9967A" );});
+  d3.select("[name=HD]").on("click", function() {
+    redraw(data, position, 'HD'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=HD]").style("background", "#E9967A" );});
+  d3.select("[name=PD]").on("click", function() {
+    redraw(data, position, 'PD'); 
+    d3.selectAll("[type=button]").style("background", "" ); 
+    d3.select("[name=PD]").style("background", "#E9967A" );});
 
   // dot position
   function position(dot) {
         dot .attr("cx", function(d) { return x(d.chromosome); })
             .attr("cy", function(d) { return y(d["disease"]); })
-            .attr("rx", 2.5)
-            .attr("ry", function(d) {return d.rank * -0.75 + 18.75});
+            .attr("rx", 2.75)
+            .attr("ry", function(d) {return d.rank * -1 + 24});
       }
 
 

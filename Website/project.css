@@ -5,7 +5,7 @@ Programmerproject Data
 */
 
 body {
-  font: 11px sans-serif;
+  font: 12px sans-serif;
   min-width: 600px;
   background: #fffdf6;
   margin: 3em 3em;
@@ -19,7 +19,7 @@ img {
 
 .border {
   height: 3em;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fffdf6;
 }
 
@@ -27,7 +27,7 @@ img {
   display: flex;
   font-size: 30px;
   text-align: center;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
  }
 
@@ -37,7 +37,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
  }
 
@@ -49,6 +49,7 @@ img {
   -webkit-justify-content: center;
           justify-content: center;
   background: #fff7dd;
+  min-width: 1125px;
 }
 
 .graph {
@@ -59,6 +60,7 @@ img {
   -webkit-justify-content: center;
           justify-content: center;
   background: #fff7dd;
+  min-width: 1125px;
 }
 
 .axis path,
@@ -88,7 +90,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background:#fff7dd;
 }
 
@@ -98,7 +100,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
 }
 
@@ -108,7 +110,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
 }
 
@@ -118,7 +120,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
 }
 
@@ -128,7 +130,7 @@ img {
   padding: 1em;
   font-size: 15px;
   text-align: justify;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
 }
 
@@ -138,6 +140,6 @@ img {
   white-space: pre-wrap;
   padding: 1em;
   font-size: 10px;
-  min-width: 1000px;
+  min-width: 1100px;
   background: #fff7dd;
 }

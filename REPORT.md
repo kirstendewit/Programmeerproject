@@ -33,3 +33,7 @@ rank van relevantie en de link naar de pagina van PubMed met informatie over het
 gen. Doordat sommige genen zo dicht naast elkaar op het chromosoom was het niet
 mogelijk om deze van elkaar te onderscheiden in de visualisatie. Er is daarom
 gekozen om gebruik te maken van de Cartesian Distortion.
+
+ 
+
+ 
