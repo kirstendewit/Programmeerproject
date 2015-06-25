@@ -11,8 +11,18 @@ De visualisatie kan geopend worden door index.html te openen.
 
  
 
-Screen shots
-------------
+Screenshots
+-----------
+
+Hieronder zijn screenshots te vinden van de website met de visualisatie.
+
+![](<docs/website1.png>)
+
+![](<docs/website2.png>)
+
+![](<docs/website3.png>)
+
+![](<docs/website4.png>)
 
  
 

@@ -82,6 +82,7 @@ img {
   width: 230px;
   height: 40px;
   background: #ffffff;
+  pointer-events:none;
 }
 
 .AD {
